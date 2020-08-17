@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mmall
+  #index.html在static下时需要配这个，此时既可以通过前端访问页面也可以后端///////如果index.html在templates下时，只能通过后端访问到，前端不能直接访问页面
+  thymeleaf:
+    prefix: classpath:/static/
+    suffix: .html
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: com.gosang.entity
