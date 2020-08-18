@@ -1,6 +1,7 @@
 package com.gosang.controller;
 
 
+import com.gosang.entity.User;
 import com.gosang.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,12 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @GetMapping("/register")
+    public String register(User user){
+        userService.save(user);
+        return "login";
+    }
 
     @GetMapping("/list")
     public ModelAndView list(){
