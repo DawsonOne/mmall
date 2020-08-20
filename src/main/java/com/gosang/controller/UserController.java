@@ -1,18 +1,23 @@
 package com.gosang.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.gosang.Exception.MMallException;
 import com.gosang.entity.User;
 import com.gosang.enums.ExceptionEnum;
 import com.gosang.enums.GenderEnum;
 import com.gosang.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpSession;
+import java.sql.Wrapper;
 
 /**
  * <p>
@@ -31,18 +36,27 @@ public class UserController {
 
     @PostMapping("/register")
     public String register(User user){
-        if (user == null){
-            throw new MMallException(ExceptionEnum.USER_NOT_EXISt);
-        }
-        if (user.getSex() == 0){
-            user.setGender(GenderEnum.MALE);
-        }else {
-            user.setGender(GenderEnum.FEMALE);
-        }
-        boolean save = userService.save(user);
+        boolean save = userService.register(user);
         if (!save){
             throw new MMallException(ExceptionEnum.REGISTER_FAIL);
         }
+        return "login";
+    }
+
+    @PostMapping("/login")
+    public String login(User user, HttpSession session){
+        User user1 = this.userService.login(user);
+        if (user1 != null){
+            session.setAttribute("user",user1);
+            return "main";
+        } else {
+          return "login";
+        }
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        session.invalidate();
         return "login";
     }
 

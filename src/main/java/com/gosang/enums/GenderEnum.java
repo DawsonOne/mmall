@@ -11,8 +11,8 @@ import lombok.Getter;
 @Getter
 public enum GenderEnum {
 
-    MALE(0,"女"),
-    FEMALE(1,"男");
+    FEMALE(0,"女"),
+    MALE(1,"男");
 
     GenderEnum(Integer code, String sex) {
         this.code = code;
