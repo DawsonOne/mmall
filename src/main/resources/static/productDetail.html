@@ -71,8 +71,8 @@
                     <input type="button" value="" onclick="increase()" class="n_btn_1"/>
                     <input type="button" value="" onclick="reduce()" class="n_btn_2"/>
                 </div>
-                <input type="hidden" id="productId" value="1">
-                <input type="hidden" id="productPrice" value="1">
+                <input type="hidden" id="productId" th:value="${product.id}">
+                <input type="hidden" id="productPrice" th:value="${product.price}">
                 <span class="fl">
                      <img src="/images/j_car.png" onclick="addCart()"/>
                 </span>

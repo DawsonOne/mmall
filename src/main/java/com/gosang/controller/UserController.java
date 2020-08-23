@@ -48,7 +48,7 @@ public class UserController {
         User user1 = this.userService.login(user);
         if (user1 != null){
             session.setAttribute("user",user1);
-            return "main";
+            return "redirect:/productCategory/CategoryList";
         } else {
           return "login";
         }

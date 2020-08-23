@@ -1,17 +1,13 @@
 $(function(){
     //给type绑定点击事件
     $(".type").click(function () {
-        var index = $(".type").index(this);
-        var obj = $(".type").eq(index);
         $(".type").removeClass("checked");
-        obj.addClass("checked");
+        $(this).addClass("checked");
     });
     //给color绑定点击事件
     $(".color").click(function () {
-        var index = $(".color").index(this);
-        var obj = $(".color").eq(index);
         $(".color").removeClass("checked");
-        obj.addClass("checked");
+        $(this).addClass("checked");
     });
 });
 
@@ -37,9 +33,9 @@ function reduce() {
 }
 
 //添加购物车
-function addCart(id,price){
+function addCart(){
     var id = $("#productId").val();
     var price = $("#productPrice").val();
     var quantity = $("#quantity").val();
-    window.location.href="settlement1.html";
+    window.location.href="/cart/add/"+id+"/"+price+"/"+quantity;
 }
