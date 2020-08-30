@@ -1,5 +1,6 @@
 package com.gosang.mapper;
 
+import com.gosang.entity.User;
 import com.gosang.entity.UserAddress;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
@@ -12,5 +13,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @since 2020-08-17
  */
 public interface UserAddressMapper extends BaseMapper<UserAddress> {
-
+    int updateAddress(Integer userId);
 }

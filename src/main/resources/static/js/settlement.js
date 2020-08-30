@@ -25,8 +25,9 @@ function addQuantity(obj){
         alert("库存不足！");
     }
     var cost = quantity*price;
+    var productId = $(".productId").eq(index).val();
     $.ajax({
-        url:"/product/updateCart/"+id+"/"+quantity+"/"+cost,
+        url:"/cart/updateCart/add/"+id+"/"+productId+"/"+quantity+"/"+cost,
         type:"POST",
         dataType:"text",
         success:function (data) {
@@ -42,14 +43,9 @@ function addQuantity(obj){
                 //更新searchBar的数据
                 $(".quantity").eq(index).text(quantity);
                 $(".cost").eq(index).text(cost);
-
-                var array = $(".cost");
-                var totalCost = 0;
-                for(var i = 0;i < array.length;i++){
-                    var val = parseInt($(".cost").eq(i).html());
-                    totalCost += val;
-                }
-                $("#totalCost").html("￥"+totalCost);
+                var searchBarTotalCost = parseInt($("#totalCost").html().substring(1));
+                searchBarTotalCost += price;
+                $("#totalCost").html("￥"+searchBarTotalCost);
             }
         }
     });
@@ -58,8 +54,10 @@ function addQuantity(obj){
 //商品数量--
 function subQuantity(obj){
     var index = $(".car_btn_1").index(obj);
+    //获取价格
     var price = parseInt($(".productPrice").eq(index).val());
     var inputObj = $(".car_ipt").eq(index);
+    //获取当前个数
     var quantity = inputObj.val();
     var id = $(".id").eq(index).val();
     --quantity;
@@ -67,14 +65,18 @@ function subQuantity(obj){
         quantity = 1;
     }
     var cost = quantity*price;
+    var productId = $(".productId").eq(index).val();
     $.ajax({
-        url:"/product/updateCart/"+id+"/"+quantity+"/"+cost,
+        url:"/cart/updateCart/sub/"+id+"/"+productId+"/"+quantity+"/"+cost,
         type:"POST",
         dataType:"text",
         success:function(data){
             if(data == "success"){
                 $(".qprice").eq(index).html("￥"+cost);
                 inputObj.val(quantity);
+                //var totalCost = parseInt($("#totalprice").html().substring(1));
+                //totalCost -= price;
+                //$("#totalprice").html("￥"+totalCost);
                 if(quantity!=1){
                     var totalCost = parseInt($("#totalprice").html().substring(1));
                     totalCost -= price;
@@ -82,14 +84,9 @@ function subQuantity(obj){
                 }
                 $(".quantity").eq(index).text(quantity);
                 $(".cost").eq(index).text(cost);
-
-                var array = $(".cost");
-                var totalCost = 0;
-                for(var i = 0;i < array.length;i++){
-                    var val = parseInt($(".cost").eq(i).html());
-                    totalCost += val;
-                }
-                $("#totalCost").html("￥"+totalCost);
+                var searchBarTotalCost = parseInt($("#totalCost").html().substring(1));
+                searchBarTotalCost -= price;
+                $("#totalCost").html("￥"+searchBarTotalCost);
             }
         }
     });
@@ -100,6 +97,6 @@ function removeCart(obj){
     var index = $(".delete").index(obj);
     var id = $(".id").eq(index).val();
     if(confirm("是否确定要删除？")){
-        window.location.href = "/product/removeCart/"+id;
+        window.location.href = "/cart/removeCart/"+id;
     }
 }

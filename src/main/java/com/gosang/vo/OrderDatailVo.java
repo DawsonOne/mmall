@@ -5,33 +5,31 @@ import lombok.Data;
 /**
  * @author gosang
  * @version 1.0
- * @date 2020/8/23 17:54
+ * @date 2020/8/30 22:16
  */
 @Data
-public class CartVo {
+public class OrderDatailVo {
+
     /**
      * 商品名称
      */
     private String name;
-    /**
-     * 文件名称
-     */
-    private String fileName;
+
     /**
      * 价格
      */
     private Float price;
 
     /**
-     * 库存
+     * 文件名称
      */
-    private Integer stock;
-
+    private String fileName;
+    /**
+     * 数量
+     */
     private Integer quantity;
-
+    /**
+     * 单类商品的总金额
+     */
     private Float cost;
-
-    private Integer id;
-
-    private Integer productId;
 }

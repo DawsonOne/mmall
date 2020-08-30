@@ -1,12 +1,11 @@
 package com.gosang.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gosang.entity.Product;
 import com.gosang.entity.ProductCategory;
 import com.gosang.mapper.ProductCategoryMapper;
-import com.gosang.mapper.ProductMapper;
 import com.gosang.service.ProductCategoryService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gosang.service.ProductService;
 import com.gosang.vo.ProductCategoryVo;
 import org.springframework.beans.BeanUtils;

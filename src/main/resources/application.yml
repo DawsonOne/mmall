@@ -11,3 +11,4 @@ mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   type-enums-package: com.gosang.enums
+  mapper-locations: com/gosang/mapper/xml/*.xml
