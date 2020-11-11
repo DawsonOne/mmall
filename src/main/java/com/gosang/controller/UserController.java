@@ -1,16 +1,13 @@
 package com.gosang.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.gosang.Exception.MMallException;
 import com.gosang.entity.User;
 import com.gosang.enums.ExceptionEnum;
-import com.gosang.enums.GenderEnum;
 import com.gosang.service.CartService;
 import com.gosang.service.UserService;
 import com.gosang.vo.CartVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +16,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-import java.sql.Wrapper;
 import java.util.ArrayList;
 import java.util.List;
 
